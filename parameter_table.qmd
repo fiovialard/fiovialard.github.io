@@ -1,0 +1,30 @@
+---
+title: "Table"
+editor: visual
+author: "Fio Vialard"
+project:
+  type: website
+  output-dir: docs
+---
+
+```{r, message=FALSE}
+#| echo: false
+require(tidyverse)
+require(flextable)
+require(readxl)
+```
+
+### Table 1. Planned variable preparation for predictive feature selection
+
+```{r}
+#| echo: false
+param <- read_excel('parameters_india.xlsx')
+# table
+param |>
+flextable(cwidth = 0.25) |> #turn into flextable object
+merge_v(j=1) |> #Merge cells in first column with same value
+theme_box() |> #Apply a theme for aesthetics
+autofit()
+```
+
+Made with [Flextable package version 0.9.3](https://rdocumentation.org/packages/flextable/versions/0.9.3).
